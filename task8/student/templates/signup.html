@@ -1,0 +1,250 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+
+            background:
+                radial-gradient(circle at top left, #00f2fe, transparent 35%),
+                radial-gradient(circle at bottom right, #7b2cff, transparent 35%),
+                linear-gradient(135deg, #050816, #101936);
+        }
+
+        .signup-card {
+            width: 100%;
+            max-width: 500px;
+
+            padding: 40px;
+
+            background: rgba(255, 255, 255, 0.10);
+
+            border: 1px solid rgba(255, 255, 255, 0.25);
+
+            border-radius: 25px;
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.45),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+
+            font-size: 36px;
+
+            margin-bottom: 35px;
+
+            background: linear-gradient(
+                90deg,
+                #00f2fe,
+                #4facfe,
+                #a855f7
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }x
+
+        label {
+            display: block;
+
+            color: white;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.25);
+
+            border-radius: 10px;
+
+            outline: none;
+
+            background: rgba(255, 255, 255, 0.10);
+
+            color: white;
+
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #00f2fe;
+
+            box-shadow:
+                0 0 15px rgba(0, 242, 254, 0.35);
+        }
+
+        input::placeholder {
+            color: #b8c1d1;
+        }
+
+        .error {
+            display: block;
+
+            color: #ff6b81;
+
+            font-size: 14px;
+
+            margin-top: 7px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+
+            padding: 15px;
+
+            margin-top: 5px;
+
+            border: none;
+            border-radius: 11px;
+
+            background: linear-gradient(
+                135deg,
+                #a855f7,
+                #ec4899
+            );
+
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 8px 25px rgba(168, 85, 247, 0.35);
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 35px rgba(236, 72, 153, 0.5);
+        }
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .signup-card {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="signup-card">
+
+        <h1>
+            Create Account
+        </h1>
+
+        <form action="{% url 'saveuser' %}" method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Enter username"
+                    required
+                >
+
+                <span class="error">
+                    {{ errormsg }}
+                </span>
+            </div>
+
+
+            <div class="form-group">
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter password"
+                    required
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="name">
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+            </div>
+
+
+            <input type="submit" value="Sign-up">
+
+        </form>
+
+    </div>
+
+</body>
+</html>
+```

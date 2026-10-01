@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 16px;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 560px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 34px 32px;
+            box-shadow: 0 20px 50px rgba(20, 10, 80, 0.35);
+        }
+
+        h1 {
+            margin: 0 0 24px;
+            text-align: center;
+            font-size: 28px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        h2 {
+            margin: 0 0 8px;
+            font-size: 14px;
+            color: #3b3f5c;
+        }
+
+        .box {
+            margin-bottom: 20px;
+            padding: 14px 16px;
+            background: #f4f5fb;
+            border-radius: 12px;
+            color: #222;
+            word-break: break-word;
+        }
+
+        .answer {
+            text-align: center;
+            padding: 22px 16px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 14px;
+            margin-bottom: 24px;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #3b3f5c;
+        }
+
+        .back {
+            display: block;
+            margin-top: 26px;
+            padding: 13px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+            color: #6a11cb;
+            text-decoration: none;
+            border: 2px solid #6a11cb;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+
+        .back:hover {
+            color: #fff;
+            background: #6a11cb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Result</h1>
+
+        <h2>Values you entered</h2>
+        <div class="box">{{ lis }}</div>
+
+        <h2>Predicted glass type</h2>
+        <div class="answer">{{ ans }}</div>
+
+        <h2>Glass types (class)</h2>
+        <ul>
+            <li>1 - building_windows_float_processed</li>
+            <li>2 - building_windows_non_float_processed</li>
+            <li>3 - vehicle_windows_float_processed</li>
+            <li>4 - vehicle_windows_non_float_processed (none in this database)</li>
+            <li>5 - containers</li>
+            <li>6 - tableware</li>
+            <li>7 - headlamps</li>
+        </ul>
+
+        <a class="back" href="javascript:history.back()">Try again</a>
+    </div>
+
+</body>
+</html>

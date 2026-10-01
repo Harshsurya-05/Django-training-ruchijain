@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Info</title>
+
+    <link rel="stylesheet"
+          href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            My Website
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{% url 'index' %}">
+                Home
+            </a>
+
+            <a href="{% url 'about' %}">
+                About
+            </a>
+
+            <a href="{% url 'info' %}">
+                Info
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Info Content -->
+
+    <section class="page-content">
+
+        <h1>Information</h1>
+
+        <p>
+            This is the Info page.
+            You can add your important information,
+            details and other content here.
+        </p>
+
+      <div class="image-grid">
+
+    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df" alt="City 1">
+
+    <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9" alt="City 2">
+
+    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000" alt="City 3">
+
+    <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785" alt="City 4">
+
+    <img src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e" alt="City 5">
+
+    <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390" alt="City 6">
+
+    <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9" alt="City 7">
+
+    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df" alt="City 8">
+
+    <img src="https://images.unsplash.com/photo-1494522358652-f30e61a60313" alt="City 9">
+
+    <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb" alt="City 10">
+
+    <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9" alt="City 11">
+
+    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df" alt="City 12">
+
+</div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 My Website
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

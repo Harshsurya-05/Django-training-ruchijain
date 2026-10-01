@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="styelsheet" href="(% static 'mycss.css' %)">
+</head>
+<body>
+    <h1 style="color: blue; font-family: 'Courier New', Courier, monospace; text-align: center; font-weight: bold;">harsh bhai</h1>
+  <div>
+    <img src="{% static '/sistec.jpg.jpeg' %}" alt="Sagar Group of institude" style="max-width: 100%; height: auto;">
+  </div>
+  {% block content %}
+  {% endblock %}
+  <div>
+    <h1>Harsh Suryawanshi</h1>
+  </div>
+</body>
+</html>

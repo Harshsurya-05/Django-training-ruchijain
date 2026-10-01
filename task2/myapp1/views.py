@@ -1,0 +1,11 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import loader
+
+def testpaper(request):
+    template=loader.get_template("testpaper.html")
+    res=template.render()
+    return HttpResponse(res)
+
+
+# Create your views here.

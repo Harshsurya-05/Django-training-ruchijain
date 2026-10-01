@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>OTS Dashboard</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: white;
+        text-align: center;
+
+        background:
+            radial-gradient(circle at 15% 20%, rgba(77,166,255,0.20), transparent 30%),
+            radial-gradient(circle at 85% 80%, rgba(138,43,226,0.25), transparent 30%),
+            linear-gradient(135deg, #050816, #0b1020 50%, #08051a);
+
+        overflow-x: hidden;
+    }
+
+    /* Background glow */
+    body::before,
+    body::after {
+        content: "";
+        position: fixed;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        filter: blur(100px);
+        z-index: -1;
+        opacity: 0.35;
+    }
+
+    body::before {
+        background: #0066ff;
+        top: -100px;
+        left: -100px;
+    }
+
+    body::after {
+        background: #8a2be2;
+        bottom: -100px;
+        right: -100px;
+    }
+
+    /* Header */
+    header {
+        padding: 55px 20px 25px;
+    }
+
+    header h1 {
+        font-size: 42px;
+        font-weight: 800;
+        letter-spacing: 3px;
+
+        color: #ffffff;
+
+        text-shadow:
+            0 0 5px #4da6ff,
+            0 0 15px #4da6ff,
+            0 0 35px #8a2be2;
+
+        animation: glow 2s infinite alternate;
+    }
+
+    header h1::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 3px;
+        margin: 15px auto 0;
+
+        background: linear-gradient(90deg, #4da6ff, #8a2be2);
+        border-radius: 10px;
+
+        box-shadow: 0 0 15px #4da6ff;
+    }
+
+    /* Main */
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 35px;
+        padding: 20px;
+    }
+
+    /* Dashboard Box */
+    .box {
+        width: 430px;
+        padding: 45px 35px;
+
+        position: relative;
+
+        background: rgba(11, 16, 32, 0.72);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        border: 1px solid rgba(77, 166, 255, 0.5);
+        border-radius: 22px;
+
+        box-shadow:
+            0 0 20px rgba(77,166,255,0.15),
+            0 0 60px rgba(138,43,226,0.12),
+            inset 0 0 30px rgba(77,166,255,0.05);
+
+        transition: 0.4s ease;
+    }
+
+    .box:hover {
+        transform: translateY(-5px);
+
+        border-color: #4da6ff;
+
+        box-shadow:
+            0 0 25px rgba(77,166,255,0.35),
+            0 0 80px rgba(138,43,226,0.25),
+            inset 0 0 35px rgba(77,166,255,0.08);
+    }
+
+    /* Small top line */
+    .box::before {
+        content: "";
+        position: absolute;
+
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 100px;
+        height: 3px;
+
+        background: linear-gradient(
+            90deg,
+            transparent,
+            #4da6ff,
+            #8a2be2,
+            transparent
+        );
+
+        box-shadow: 0 0 15px #4da6ff;
+    }
+
+    .box h2 {
+        font-size: 30px;
+        margin-bottom: 10px;
+
+        color: #ffffff;
+
+        text-shadow:
+            0 0 8px rgba(77,166,255,0.8);
+    }
+
+    .box p {
+        margin-bottom: 25px;
+
+        color: #9da9c7;
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    /* Remove ugly gaps */
+    .box br {
+        display: none;
+    }
+
+    /* Buttons */
+    a {
+        text-decoration: none;
+        display: block;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px 20px;
+        margin: 8px 0;
+
+        border: 1px solid rgba(77,166,255,0.6);
+        border-radius: 10px;
+
+        background: rgba(77,166,255,0.04);
+
+        color: #6db5ff;
+
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 1px;
+
+        cursor: pointer;
+
+        position: relative;
+        overflow: hidden;
+
+        transition: all 0.3s ease;
+    }
+
+    /* Button shine */
+    button::before {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: -100%;
+
+        width: 100%;
+        height: 100%;
+
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.18),
+            transparent
+        );
+
+        transition: 0.5s;
+    }
+
+    button:hover::before {
+        left: 100%;
+    }
+
+    button:hover {
+        color: white;
+
+        background: linear-gradient(
+            90deg,
+            #1677ff,
+            #6a2cff
+        );
+
+        border-color: #70baff;
+
+        transform: translateY(-3px) scale(1.02);
+
+        box-shadow:
+            0 5px 20px rgba(77,166,255,0.35),
+            0 0 25px rgba(138,43,226,0.25);
+    }
+
+    button:active {
+        transform: scale(0.98);
+    }
+
+    /* Different button colors */
+    a:nth-of-type(1) button {
+        border-color: #4da6ff;
+    }
+
+    a:nth-of-type(2) button {
+        border-color: #6d7cff;
+    }
+
+    a:nth-of-type(3) button {
+        border-color: #9b5cff;
+    }
+
+    a:nth-of-type(4) button {
+        border-color: #c45cff;
+    }
+
+    /* Footer */
+    footer {
+        margin-top: 65px;
+        padding-bottom: 30px;
+
+        color: #65708c;
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+
+    footer p {
+        opacity: 0.8;
+    }
+
+    /* Animation */
+    @keyframes glow {
+        from {
+            text-shadow:
+                0 0 5px #4da6ff,
+                0 0 15px #4da6ff;
+        }
+
+        to {
+            text-shadow:
+                0 0 8px #4da6ff,
+                0 0 20px #4da6ff,
+                0 0 40px #8a2be2;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+
+        header {
+            padding-top: 35px;
+        }
+
+        header h1 {
+            font-size: 29px;
+            letter-spacing: 1px;
+        }
+
+        main {
+            margin-top: 15px;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 430px;
+            padding: 35px 22px;
+        }
+
+        .box h2 {
+            font-size: 25px;
+        }
+
+        button {
+            padding: 14px;
+        }
+
+        footer {
+            margin-top: 40px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+    <h1>OTS - Online Testing System</h1>
+</header>
+
+<main>
+
+```
+<section class="box">
+
+    <h2>Welcome to OTS</h2>
+
+    <p>Select a test</p>
+
+    <a href="{% url 'test1' %}">
+        <button type="button">
+            Test of 1 Question
+        </button>
+    </a>
+
+    <br>
+
+    <a href="{% url 'test3' %}">
+        <button type="button">
+            Test of 3 Questions
+        </button>
+    </a>
+
+    <br>
+
+    <a href="{% url 'test5' %}">
+        <button type="button">
+            Test of 5 Questions
+        </button>
+    </a>
+
+    <br>
+
+    <a href="{% url 'history' %}">
+        <button type="button">
+            Test History
+        </button>
+    </a>
+
+</section>
+```
+
+</main>
+
+<footer>
+    <p>OTS • Online Testing System</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>About</title>
+
+    <link rel="stylesheet"
+          href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            My Website
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{% url 'index' %}">
+                Home
+            </a>
+
+            <a href="{% url 'about' %}">
+                About
+            </a>
+
+            <a href="{% url 'info' %}">
+                Info
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- About Content -->
+
+    <section class="page-content">
+
+        <h1>About Us</h1>
+
+        <p>
+            Welcome to our website.
+            This is the About page.
+            Here you can write information about
+            yourself, your company or your project.
+        </p>
+
+       <div class="image-grid">
+
+    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853" alt="Laptop 1">
+
+    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" alt="Laptop 2">
+
+    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853" alt="Laptop 3">
+
+    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1" alt="Laptop 4">
+
+    <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2" alt="Laptop 5">
+
+    <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed" alt="Laptop 6">
+
+    <img src="https://images.unsplash.com/photo-1593642532744-d377ab507dc8" alt="Laptop 7">
+
+    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45" alt="Laptop 8">
+
+    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302" alt="Laptop 9">
+
+    <img src="https://images.unsplash.com/photo-1611078489935-0cb964de46d6" alt="Laptop 10">
+
+    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef" alt="Laptop 11">
+
+    <img src="https://images.unsplash.com/photo-1484788984921-03950022c9ef" alt="Laptop 12">
+
+</div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 My Website
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

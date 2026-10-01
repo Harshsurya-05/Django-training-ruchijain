@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Test History</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: white;
+        text-align: center;
+
+        background:
+            radial-gradient(circle at 10% 15%, rgba(66, 245, 155, 0.18), transparent 30%),
+            radial-gradient(circle at 90% 85%, rgba(0, 191, 255, 0.20), transparent 30%),
+            linear-gradient(135deg, #03100b, #071b15 50%, #020b12);
+
+        overflow-x: hidden;
+    }
+
+    /* Background glow */
+    body::before,
+    body::after {
+        content: "";
+        position: fixed;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        filter: blur(110px);
+        opacity: 0.25;
+        z-index: -1;
+    }
+
+    body::before {
+        background: #42f59b;
+        top: -120px;
+        left: -100px;
+    }
+
+    body::after {
+        background: #00bfff;
+        right: -120px;
+        bottom: -120px;
+    }
+
+    /* Header */
+    header {
+        padding: 50px 20px 25px;
+    }
+
+    header h1 {
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: 3px;
+
+        color: white;
+
+        text-shadow:
+            0 0 5px #42f59b,
+            0 0 15px #42f59b,
+            0 0 35px #00bfff;
+
+        animation: titleGlow 2s infinite alternate;
+    }
+
+    header h1::after {
+        content: "";
+        display: block;
+
+        width: 130px;
+        height: 3px;
+
+        margin: 15px auto 0;
+
+        background: linear-gradient(
+            90deg,
+            transparent,
+            #42f59b,
+            #00bfff,
+            transparent
+        );
+
+        box-shadow: 0 0 15px #42f59b;
+    }
+
+    /* Main */
+    main {
+        width: 90%;
+        max-width: 1100px;
+        margin: 25px auto 60px;
+    }
+
+    /* Main glass box */
+    .box {
+        position: relative;
+
+        padding: 40px;
+
+        background: rgba(5, 25, 19, 0.72);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        border: 1px solid rgba(66, 245, 155, 0.45);
+        border-radius: 22px;
+
+        box-shadow:
+            0 0 25px rgba(66, 245, 155, 0.12),
+            0 0 60px rgba(0, 191, 255, 0.10),
+            inset 0 0 30px rgba(66, 245, 155, 0.04);
+
+        transition: 0.4s ease;
+    }
+
+    .box:hover {
+        border-color: #42f59b;
+
+        box-shadow:
+            0 0 30px rgba(66, 245, 155, 0.22),
+            0 0 80px rgba(0, 191, 255, 0.15),
+            inset 0 0 35px rgba(66, 245, 155, 0.06);
+    }
+
+    /* Top glowing line */
+    .box::before {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 150px;
+        height: 3px;
+
+        background: linear-gradient(
+            90deg,
+            transparent,
+            #42f59b,
+            #00bfff,
+            transparent
+        );
+
+        box-shadow: 0 0 15px #42f59b;
+    }
+
+    .box > h2 {
+        font-size: 28px;
+        margin-bottom: 25px;
+
+        color: white;
+
+        text-shadow:
+            0 0 8px rgba(66, 245, 155, 0.7);
+    }
+
+    /* Table container */
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+
+        margin-top: 15px;
+
+        overflow: hidden;
+
+        border: 1px solid rgba(66, 245, 155, 0.4);
+        border-radius: 14px;
+
+        background: rgba(0, 0, 0, 0.18);
+    }
+
+    th,
+    td {
+        padding: 17px 15px;
+
+        border-bottom: 1px solid rgba(66, 245, 155, 0.18);
+
+        font-size: 15px;
+    }
+
+    th {
+        color: #42f59b;
+
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        background: rgba(66, 245, 155, 0.07);
+
+        text-shadow: 0 0 8px rgba(66, 245, 155, 0.7);
+    }
+
+    td {
+        color: #dcefe7;
+    }
+
+    /* Table row hover */
+    tr:not(:first-child) {
+        transition: 0.25s ease;
+    }
+
+    tr:not(:first-child):hover {
+        background: rgba(66, 245, 155, 0.08);
+
+        transform: scale(1.005);
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* Score column */
+    td:last-child {
+        color: #42f59b;
+        font-weight: bold;
+
+        text-shadow: 0 0 8px rgba(66, 245, 155, 0.5);
+    }
+
+    /* Performance */
+    .performance {
+        margin-top: 30px;
+        padding: 25px;
+
+        border: 1px solid rgba(0, 191, 255, 0.5);
+        border-radius: 15px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(0, 191, 255, 0.07),
+                rgba(66, 245, 155, 0.05)
+            );
+
+        box-shadow:
+            0 0 20px rgba(0, 191, 255, 0.08),
+            inset 0 0 20px rgba(66, 245, 155, 0.03);
+    }
+
+    .performance h2 {
+        margin-bottom: 12px;
+
+        color: #00bfff;
+
+        font-size: 22px;
+
+        text-shadow:
+            0 0 10px #00bfff;
+    }
+
+    .performance p {
+        font-size: 20px;
+        font-weight: 600;
+
+        color: white;
+    }
+
+    .performance p::first-line {
+        color: #42f59b;
+    }
+
+    /* Back button */
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        padding: 13px 30px;
+        margin-top: 25px;
+
+        border: 1px solid #42f59b;
+        border-radius: 9px;
+
+        background: rgba(66, 245, 155, 0.04);
+
+        color: #42f59b;
+
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+
+        cursor: pointer;
+
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        color: #03100b;
+
+        background: linear-gradient(
+            90deg,
+            #42f59b,
+            #00bfff
+        );
+
+        border-color: #42f59b;
+
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 5px 20px rgba(66, 245, 155, 0.35),
+            0 0 25px rgba(0, 191, 255, 0.25);
+    }
+
+    button:active {
+        transform: scale(0.97);
+    }
+
+    /* Animation */
+    @keyframes titleGlow {
+        from {
+            text-shadow:
+                0 0 5px #42f59b,
+                0 0 15px #42f59b;
+        }
+
+        to {
+            text-shadow:
+                0 0 8px #42f59b,
+                0 0 20px #42f59b,
+                0 0 40px #00bfff;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+
+        header {
+            padding-top: 35px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        main {
+            width: 94%;
+        }
+
+        .box {
+            padding: 25px 15px;
+        }
+
+        .box > h2 {
+            font-size: 24px;
+        }
+
+        table {
+            font-size: 13px;
+        }
+
+        th,
+        td {
+            padding: 12px 7px;
+        }
+
+        .performance {
+            padding: 20px 10px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+    <h1>OTS - Test History</h1>
+</header>
+
+<main>
+
+```
+<section class="box">
+
+    <h2>Your Test History</h2>
+
+    <table>
+
+        <tr>
+            <th>Test</th>
+            <th>Total Questions</th>
+            <th>Score</th>
+        </tr>
+
+        {% for test in tests %}
+
+        <tr>
+            <td>{{ test.test_name }}</td>
+            <td>{{ test.total_questions }}</td>
+            <td>{{ test.score }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <section class="performance">
+
+        <h2>Performance</h2>
+
+        <p>
+            Total Score:
+            {{ total_score }} / {{ total_questions }}
+        </p>
+
+    </section>
+
+    <a href="{% url 'dashboard' %}">
+        <button type="button">
+            ← Back to Dashboard
+        </button>
+    </a>
+
+</section>
+```
+
+</main>
+
+</body>
+</html>
+   

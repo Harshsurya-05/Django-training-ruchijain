@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>student registraion page</h1>
+    <form action="{% url 'saveuser' %}" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="sname">sname:</label>
+        </div>
+        <div> 
+            <input type="text" name="sname" id="sname" required> 
+            <span>{{ errormsg }}</span> 
+        </div>
+        <div>
+            <label for="spassword">spassword:</label>
+        </div>
+        <div> 
+            <input type="text" name="spassword" id="spassword" required> 
+            <span>{{ errormsg }}</span> 
+        </div>
+        <div>
+            <label for="sid">sid:</label>
+        </div>
+        <div> 
+            <input type="text" name="sid" id="sid" required> 
+            <span>{{ errormsg }}</span> 
+        </div>
+        <div>
+            <label for="sbranch">sbranch:</label>
+        </div>
+        <div> 
+            <input type="text" name="sbranch" id="sbranch" required> 
+            <span>{{ errormsg }}</span> 
+        </div>
+        <div>
+            <label for="semail">semail:</label>
+        </div>
+        <div> 
+            <input type="text" name="semail" id="semail" required> 
+            <span>{{ errormsg }}</span> 
+        </div>
+        <div> 
+            <input type="submit" value="Sign-up">
+        </div>
+    </form>
+</body>
+</html>

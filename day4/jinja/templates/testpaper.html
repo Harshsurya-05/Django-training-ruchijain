@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="styelsheet" href="{% static 'mycss' %}">
+</head>
+<body>
+    <div>
+       {{que}} 
+    </div>
+    <div>
+        <div>
+            <input type="radio" name="answer">a</div>
+             <input type="radio" name="answer">b</div>
+              <input type="radio" name="answer">c</div>
+              <br>
+               <input type="radio" name="answer">d</div>
+    </div>
+    <div>
+        <img src="{% static 'neon-spider-man-suit-backiee-4K.jpg' %}" width="100%" height="100%">
+    </div>
+    <div>
+        <video width="100%" height="100%" controls>
+            <source src="{% static '/12392565_1920_1440_60fps.mp4' %}" type="video/mp4">
+    </div>
+</body>
+</html>
